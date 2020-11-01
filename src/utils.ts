@@ -360,24 +360,30 @@ const getJSON = async (
 export const oauthToken = async (
   { baseUrl, timeout, audience, scope, ...options }: TokenEndpointOptions,
   worker: Worker
-) =>
-  await getJSON(
+) => {
+  var form_data = new FormData();
+  var obj = {
+    redirect_uri: window.location.origin,
+    ...options
+  };
+  for (var key in obj) {
+    form_data.append(key, obj[key]);
+  }
+  return await getJSON(
     `${baseUrl}/oauth/token`,
     timeout,
     audience || 'default',
     scope,
     {
       method: 'POST',
-      body: JSON.stringify({
-        redirect_uri: window.location.origin,
-        ...options
-      }),
+      body: form_data,
       headers: {
-        'Content-type': 'application/json'
+        'Content-type': 'application/x-www-form-urlencoded'
       }
     },
     worker
   );
+};
 
 export const validateCrypto = () => {
   if (!getCrypto()) {
