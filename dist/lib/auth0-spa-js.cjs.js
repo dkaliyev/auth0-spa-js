@@ -4440,7 +4440,7 @@ var getJSON = function (url, timeout, audience, scope, options, worker) {
 };
 var oauthToken = function (_a, worker) {
   return __awaiter(void 0, void 0, void 0, function () {
-    var form_data, obj, key;
+    var form_data;
     var baseUrl = _a.baseUrl,
       timeout = _a.timeout,
       audience = _a.audience,
@@ -4449,11 +4449,9 @@ var oauthToken = function (_a, worker) {
     return __generator(this, function (_b) {
       switch (_b.label) {
         case 0:
-          form_data = new FormData();
-          obj = __assign({ redirect_uri: window.location.origin }, options);
-          for (key in obj) {
-            form_data.append(key, obj[key]);
-          }
+          form_data = new URLSearchParams(
+            __assign({ redirect_uri: window.location.origin }, options)
+          );
           return [
             4 /*yield*/,
             getJSON(

@@ -361,14 +361,11 @@ export const oauthToken = async (
   { baseUrl, timeout, audience, scope, ...options }: TokenEndpointOptions,
   worker: Worker
 ) => {
-  var form_data = new FormData();
-  var obj = {
+  var form_data = new URLSearchParams({
     redirect_uri: window.location.origin,
     ...options
-  };
-  for (var key in obj) {
-    form_data.append(key, obj[key]);
-  }
+  });
+
   return await getJSON(
     `${baseUrl}/oauth/token`,
     timeout,

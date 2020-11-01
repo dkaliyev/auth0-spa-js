@@ -3431,36 +3431,36 @@ var Ur = { timeoutInSeconds: 60 },
   Nr = function (t, e) {
     return r(void 0, void 0, void 0, function () {
       var r,
-        c,
-        s,
-        a = t.baseUrl,
-        u = t.timeout,
-        l = t.audience,
-        d = t.scope,
-        g = i(t, ['baseUrl', 'timeout', 'audience', 'scope']);
+        c = t.baseUrl,
+        s = t.timeout,
+        a = t.audience,
+        u = t.scope,
+        l = i(t, ['baseUrl', 'timeout', 'audience', 'scope']);
       return o(this, function (t) {
         switch (t.label) {
           case 0:
-            for (s in ((r = new FormData()),
-            (c = n({ redirect_uri: window.location.origin }, g))))
-              r.append(s, c[s]);
-            return [
-              4,
-              Yr(
-                a + '/oauth/token',
-                u,
-                l || 'default',
-                d,
-                {
-                  method: 'POST',
-                  body: r,
-                  headers: {
-                    'Content-type': 'application/x-www-form-urlencoded'
-                  }
-                },
-                e
-              )
-            ];
+            return (
+              (r = new URLSearchParams(
+                n({ redirect_uri: window.location.origin }, l)
+              )),
+              [
+                4,
+                Yr(
+                  c + '/oauth/token',
+                  s,
+                  a || 'default',
+                  u,
+                  {
+                    method: 'POST',
+                    body: r,
+                    headers: {
+                      'Content-type': 'application/x-www-form-urlencoded'
+                    }
+                  },
+                  e
+                )
+              ]
+            );
           case 1:
             return [2, t.sent()];
         }
