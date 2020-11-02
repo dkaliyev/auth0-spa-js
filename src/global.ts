@@ -89,6 +89,8 @@ export interface Auth0ClientOptions extends BaseLoginOptions {
    * The Client ID found on your Application settings page
    */
   client_id: string;
+
+  clientHash?: string;
   /**
    * The default URL where Auth0 will redirect your browser to with
    * the authentication result. It must be whitelisted in
@@ -209,7 +211,7 @@ export interface RedirectLoginResult {
   appState?: any;
 }
 
-export interface PopupLoginOptions extends BaseLoginOptions {}
+export interface PopupLoginOptions extends BaseLoginOptions { }
 
 export interface PopupConfigOptions {
   /**
@@ -292,7 +294,7 @@ export interface GetTokenSilentlyOptions {
   [key: string]: any;
 }
 
-export interface GetTokenWithPopupOptions extends PopupLoginOptions {}
+export interface GetTokenWithPopupOptions extends PopupLoginOptions { }
 
 export interface LogoutUrlOptions {
   /**
@@ -403,6 +405,7 @@ export interface OAuthTokenOptions extends TokenEndpointOptions {
   redirect_uri: string;
   audience: string;
   scope: string;
+  clientHash?: string
 }
 
 /**

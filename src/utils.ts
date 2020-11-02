@@ -358,7 +358,7 @@ const getJSON = async (
 };
 
 export const oauthToken = async (
-  { baseUrl, timeout, audience, scope, ...options }: TokenEndpointOptions,
+  { clientHash, baseUrl, timeout, audience, scope, ...options }: TokenEndpointOptions,
   worker: Worker
 ) => {
   var form_data = new URLSearchParams({
@@ -375,6 +375,7 @@ export const oauthToken = async (
       method: 'POST',
       body: form_data,
       headers: {
+        'Authorization': 'Basic ' + clientHash,
         'Content-type': 'application/x-www-form-urlencoded'
       }
     },

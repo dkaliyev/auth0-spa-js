@@ -137,6 +137,7 @@ export default class Auth0Client {
   private tokenIssuer: string;
   private defaultScope: string;
   private scope: string;
+  private clientHash: string;
   private cookieStorage: ClientStorage;
   private sessionCheckExpiryDays: number;
 
@@ -165,6 +166,7 @@ export default class Auth0Client {
 
     this.cache = cacheFactory(this.cacheLocation)();
     this.scope = this.options.scope;
+    this.clientHash = this.options.clientHash;
     this.transactionManager = new TransactionManager(transactionStorage);
     this.domainUrl = `https://${this.options.domain}`;
     this.tokenIssuer = getTokenIssuer(this.options.issuer, this.domainUrl);
@@ -499,6 +501,7 @@ export default class Auth0Client {
       audience: transaction.audience,
       scope: transaction.scope,
       baseUrl: this.domainUrl,
+      clientHash: this.clientHash,
       client_id: this.options.client_id,
       code_verifier: transaction.code_verifier,
       grant_type: 'authorization_code',
@@ -774,8 +777,8 @@ export default class Auth0Client {
       nonceIn,
       code_challenge,
       options.redirect_uri ||
-        this.options.redirect_uri ||
-        window.location.origin
+      this.options.redirect_uri ||
+      window.location.origin
     );
 
     const url = this._authorizeUrl({
