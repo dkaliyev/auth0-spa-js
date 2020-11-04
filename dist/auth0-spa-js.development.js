@@ -6605,6 +6605,9 @@
               )),
                 (ignoreCache = _a.ignoreCache),
                 (getTokenOptions = __rest(_a, ['ignoreCache']));
+              console.log(
+                'Getting token silently, ignore cache: ' + ignoreCache
+              );
               getAccessTokenFromCache = function () {
                 var cache = _this.cache.get(
                   {

@@ -600,6 +600,8 @@ export default class Auth0Client {
       scope: getUniqueScopes(this.defaultScope, this.scope, options.scope)
     };
 
+    console.log('Getting token silently, ignore cache: ' + ignoreCache);
+
     const getAccessTokenFromCache = () => {
       const cache = this.cache.get(
         {

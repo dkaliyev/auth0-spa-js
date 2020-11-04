@@ -4451,6 +4451,7 @@
                       )),
                       (r = e.ignoreCache),
                       (c = i(e, ['ignoreCache'])),
+                      console.log('Getting token silently, ignore cache: ' + r),
                       (s = function () {
                         var t = d.cache.get(
                           {
