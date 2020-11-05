@@ -601,6 +601,7 @@ export default class Auth0Client {
     };
 
     console.log('Getting token silently, ignore cache: ' + ignoreCache);
+    //this is a test
 
     const getAccessTokenFromCache = () => {
       const cache = this.cache.get(
