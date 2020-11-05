@@ -6,7 +6,8 @@
     "sourceMap": true,
     "declaration": true,
     "declarationDir": "./dist/typings",
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "removeComments": false
   },
   "exclude": ["./__tests__", "./dist/typings", "**/__mocks__/**"]
 }
